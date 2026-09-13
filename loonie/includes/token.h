@@ -1,6 +1,14 @@
 #ifndef TOKEN_H
 #define TOKEN_H
 
+#include <stdint.h>
+
+
+/*
+THIS HEADER: FILE FOR TOKENS
+GLOBAL_TOKENS: {MOD_Loonie - branch}
+*/
+
 typedef enum {
     TOKEN_KEYWORD,
     TOKEN_IDENTIFIER,
@@ -15,15 +23,19 @@ typedef enum {
     TOKEN_EOF,
     TOKEN_UNKNOWN,
 
-    // LOONIE
-    MOD_Loonie,
+    // GLOBAL V_TOKENS
+    MOD_LOONIE,
     branch,
 } TokenType;
 
+
 typedef struct {
     TokenType type;
-    char value[64];
-    int line, column;
+
+    const char *value;
+
+    uint32_t line;
+    uint32_t column;
 } Token;
 
 const char* token_type_name(TokenType type);
